@@ -8,3 +8,5 @@ kinect_bridge2/KinectJoint[] joints
 uint8 is_tracked
 uint8 hand_state_left
 uint8 hand_state_right
+
+kinect_bridge2/KinectBodyLean lean

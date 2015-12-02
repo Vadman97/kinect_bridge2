@@ -409,7 +409,7 @@ public:
 
         }
     };
-
+	/*
     // ####################################################################################################
     struct SpeechRecognizer : public ReleasableWrapper<ISpRecognizer>
     {
@@ -541,6 +541,7 @@ public:
 //          m_hSpeechEvent = m_pSpeechContext->GetNotifyEventHandle();
         }
     };
+	*/
 
 /*
     // ####################################################################################################
@@ -597,7 +598,7 @@ public:
     InfraredFrameReader infrared_frame_reader_;
     AudioBeamFrameReader audio_beam_frame_reader_;
     BodyFrameReader body_frame_reader_;
-    SpeechRecognizer speech_recognizer_;
+ //   SpeechRecognizer speech_recognizer_;
 //    FaceFrameReader face_frame_reader_;
 
     bool initialized_;
@@ -647,7 +648,7 @@ public:
             body_frame_reader_.initialize( kinect_sensor_ );
         }
 
-        if( speech )
+     /*   if( speech )
         {
 //            if( CLSID_ExpectedRecognizer != CLSID_SpInprocRecognizer )
 //            {
@@ -657,7 +658,7 @@ public:
             {
                 speech_recognizer_.initialize( kinect_sensor_, std::wstring( L"grammar.grxml" ) );
             }
-        }
+        } */
 
 /*
         if( face )
@@ -1067,10 +1068,20 @@ public:
                 std::array<Joint, JointType_Count> joint_points;
                 std::array<JointOrientation, JointType_Count> joint_orientations;
 
+				PointF lean;
+				body->get_Lean(& lean);
+				float leanX = lean.X;
+				float leanY = lean.Y;
+				body_msg.lean_.x = leanX;
+				body_msg.lean_.y = leanY;
+				//this file is server code
+				std::cout << body_msg.lean_.x << " " << body_msg.lean_.x << std::endl;
+
                 auto & joints_msg = body_msg.joints_;
 
                 if( joints_msg.size() < JointType_Count ) joints_msg.resize( JointType_Count );
                 body->GetJoints( joint_points.size(), joint_points.data() );
+                body->GetJointOrientations( joint_orientations.size(), joint_orientations.data() );
 
                 for( size_t joints_idx = 0; joints_idx < joint_points.size(); ++joints_idx )
                 {
@@ -1116,7 +1127,7 @@ public:
         ULONG num_events_fetched = 0;
 
         // look for a single event
-        speech_recognizer_.speech_context_->GetEvents( 1, &speech_event, &num_events_fetched );
+       // speech_recognizer_.speech_context_->GetEvents( 1, &speech_event, &num_events_fetched );
 
         if( num_events_fetched > 0 )
         {
@@ -1157,7 +1168,7 @@ public:
         if( !speech_message_ptr ) speech_message_ptr = std::make_shared<__Message>();
 
         pullSpeech( *speech_message_ptr );
-    }
+    } 
 
 /*
     // ====================================================================================================
