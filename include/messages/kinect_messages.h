@@ -287,7 +287,7 @@ public:
 class KinectBodyLeanMessage
 {
 public:
-	double x, y;
+	float x, y;
 
 	// ====================================================================================================
 	KinectBodyLeanMessage()
