@@ -30,7 +30,8 @@ public:
     typedef kinect_bridge2::KinectSpeechPhrase _KinectSpeechPhraseMsg;
 
     typedef kinect_bridge2::KinectBodies _KinectBodiesMsg;
-    typedef kinect_bridge2::KinectBody _KinectBodyMsg;
+	typedef kinect_bridge2::KinectBody _KinectBodyMsg;
+	typedef kinect_bridge2::KinectBodyLean _KinectBodyLeanMsg;
     typedef kinect_bridge2::KinectJoint _KinectJointMsg;
 
     ros::NodeHandle nh_rel_;
