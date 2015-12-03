@@ -158,6 +158,11 @@ public:
                 auto const & joints_msg = body_msg.joints_;
                 auto & ros_joints_msg = ros_body_msg.joints;
 
+				ros_body_msg.lean.x = body_msg.lean_.x;
+				ros_body_msg.lean.y = body_msg.lean_.y;
+
+				std::cout << "LX: " << ros_body_msg.lean.x << " LY: " << ros_body_msg.lean.y << endl;
+
                 std::stringstream tf_frame_basename_ss;
                 tf_frame_basename_ss << "/kinect_client/skeleton" << body_idx << "/";
 
