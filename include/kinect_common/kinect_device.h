@@ -1062,6 +1062,8 @@ public:
             if( FAILED( body->get_HandRightState( reinterpret_cast<HandState *>( &body_msg.hand_state_right_ ) ) ) ) throw KinectException( "Failed to get right hand state" );
             if( FAILED( body->get_TrackingId( &body_msg.tracking_id_ ) ) ) throw KinectException( "Failed to get body tracking ID" );
 
+			body_msg.lean_.x = static_cast<float>(.5);
+			body_msg.lean_.y = static_cast<float>(.75);
             // only fill out joint info if body is tracked
             if( body_msg.is_tracked_ )
             {
@@ -1103,7 +1105,7 @@ public:
                 }
             }
 
-			std::cout << "bIdx: " << bodies_idx << "bLean: " << body_msg.lean_.x << " M:" << &body_msg << std::endl;
+			std::cout << "bIdx: " << bodies_idx << "bLeanX: " << body_msg.lean_.x << " M:" << &body_msg << std::endl;
             payload.emplace_back( std::move( body_msg ) );
         }
     }
