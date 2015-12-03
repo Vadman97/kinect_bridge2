@@ -1,0 +1,4 @@
+Rewrite KinectBodyLeanMessage to be serializeable to pack unpack with the parent message
+	look at the current KinectBodyMessage pack unpack
+
+Write program to read information from the kinect client ros message packages to process information into our useable format
