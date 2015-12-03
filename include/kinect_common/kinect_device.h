@@ -1075,7 +1075,7 @@ public:
 				body_msg.lean_.x = static_cast<float>(leanX);
 				body_msg.lean_.y = static_cast<float>(leanY);
 				//this file is server code
-				std::cout << body_msg.lean_.x << " " << body_msg.lean_.x << std::endl; //remove
+				//std::cout << body_msg.lean_.x << " " << body_msg.lean_.x << std::endl;
 
                 auto & joints_msg = body_msg.joints_;
 
@@ -1103,7 +1103,7 @@ public:
                 }
             }
 
-			std::cout << "bIdx: " << bodies_idx << "bLeanX: " << body_msg.lean_.x << " M:" << &body_msg << std::endl;
+			//std::cout << "bIdx: " << bodies_idx << "bLeanX: " << body_msg.lean_.x << " M:" << &body_msg << std::endl;
             payload.emplace_back( std::move( body_msg ) );
         }
     }
