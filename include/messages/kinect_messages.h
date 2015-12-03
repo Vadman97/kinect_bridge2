@@ -299,7 +299,7 @@ public:
     };
 
     std::vector<KinectJointMessage> & joints_;
-	PointMessage<float, 2> lean_;
+	PointMessage<float, 3> lean_; //only use x y dim
     uint8_t is_tracked_;
     HandState hand_state_left_;
     HandState hand_state_right_;
@@ -327,6 +327,7 @@ public:
         archive << static_cast<uint8_t>( hand_state_left_ );
         archive << static_cast<uint8_t>( hand_state_right_ );
         archive << tracking_id_;
+		lean_.pack(archive);
         _Message::pack( archive );
     }
 
@@ -345,6 +346,8 @@ public:
         hand_state_right_ = static_cast<HandState>( hand_state_right );
 
         archive >> tracking_id_;
+		
+		lean_.unpack(archive);
 
         _Message::unpack( archive );
     }
