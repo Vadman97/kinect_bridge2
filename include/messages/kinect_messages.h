@@ -284,7 +284,7 @@ public:
 };
 
 // ####################################################################################################
-class KinectBodyLeanMessage : public SerializableInterface
+class KinectBodyLeanMessage
 {
 public:
 	float x, y;
@@ -292,28 +292,8 @@ public:
 	// ====================================================================================================
 	KinectBodyLeanMessage()
 	{
-		//
-	}
-
-	// ====================================================================================================
-	template<class __Archive>
-	void pack(__Archive & archive)
-	{
-		archive << static_cast<float>(x);
-		archive << static_cast<float>(y);
-	}
-
-	// ====================================================================================================
-	template<class __Archive>
-	void unpack(__Archive & archive)
-	{
-		float _x;
-		archive >> _x;
-		x = static_cast<float>(_x);
-
-		float _y;
-		archive >> _y;
-		y = static_cast<float>(_y);
+		x = 0.;
+		y = 0.;
 	}
 
 	// ====================================================================================================
@@ -347,6 +327,7 @@ public:
     :
         _Message(),
         joints_( this->payload_ ),
+		lean_(),
         is_tracked_( 0 ),
         hand_state_left_( HandState::UNKNOWN ),
         hand_state_right_( HandState::UNKNOWN ),
