@@ -1049,7 +1049,7 @@ public:
 
         payload.clear();
 
-        for( size_t bodies_idx = 0; bodies_idx < bodies.size(); ++bodies_idx )
+		for (size_t bodies_idx = 0; bodies_idx < bodies.size(); ++bodies_idx)
         {
             if( !bodies[bodies_idx].get() ) continue;
 
@@ -1103,6 +1103,7 @@ public:
                 }
             }
 
+			std::cout << "bIdx: " << bodies_idx << "bLean: " << body_msg.lean_.x << " M:" << &body_msg << std::endl;
             payload.emplace_back( std::move( body_msg ) );
         }
     }

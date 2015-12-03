@@ -9,4 +9,4 @@ uint8 is_tracked
 uint8 hand_state_left
 uint8 hand_state_right
 
-kinect_bridge2/KinectBodyLean lean
+geometry_msgs/Point32 lean

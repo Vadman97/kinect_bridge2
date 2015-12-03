@@ -284,23 +284,6 @@ public:
 };
 
 // ####################################################################################################
-class KinectBodyLeanMessage
-{
-public:
-	float x, y;
-
-	// ====================================================================================================
-	KinectBodyLeanMessage()
-	{
-		x = 0.;
-		y = 0.;
-	}
-
-	// ====================================================================================================
-	DECLARE_MESSAGE_INFO(KinectBodyLeanMessage)
-};
-
-// ####################################################################################################
 class KinectBodyMessage : public VectorMessage<KinectJointMessage>
 {
 public:
@@ -316,7 +299,7 @@ public:
     };
 
     std::vector<KinectJointMessage> & joints_;
-	KinectBodyLeanMessage lean_;
+	PointMessage<float, 2> lean_;
     uint8_t is_tracked_;
     HandState hand_state_left_;
     HandState hand_state_right_;

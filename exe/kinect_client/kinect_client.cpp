@@ -31,7 +31,6 @@ public:
 
     typedef kinect_bridge2::KinectBodies _KinectBodiesMsg;
 	typedef kinect_bridge2::KinectBody _KinectBodyMsg;
-	typedef kinect_bridge2::KinectBodyLean _KinectBodyLeanMsg;
     typedef kinect_bridge2::KinectJoint _KinectJointMsg;
 
     ros::NodeHandle nh_rel_;
@@ -159,13 +158,8 @@ public:
                 auto const & joints_msg = body_msg.joints_;
                 auto & ros_joints_msg = ros_body_msg.joints;
 
-				_KinectBodyLeanMsg ros_lean_msg;
-				ros_lean_msg.x = body_msg.lean_.x;
-				ros_lean_msg.y = body_msg.lean_.y;
-				ros_body_msg.lean = std::move(ros_lean_msg);
-
-				//ros_body_msg.lean.x = body_msg.lean_.x;
-				//ros_body_msg.lean.y = body_msg.lean_.y;
+				ros_body_msg.lean.x = body_msg.lean_.x;
+				ros_body_msg.lean.y = body_msg.lean_.y;
 
 				std::cout << "LX: " << ros_body_msg.lean.x << " LY: " << ros_body_msg.lean.y << std::endl;
 
