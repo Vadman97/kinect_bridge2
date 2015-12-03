@@ -167,8 +167,7 @@ public:
 				//ros_body_msg.lean.x = body_msg.lean_.x;
 				//ros_body_msg.lean.y = body_msg.lean_.y;
 
-				if (ros_body_msg.lean.x || ros_body_msg.lean.y)
-					std::cout << "LX: " << ros_body_msg.lean.x << " LY: " << ros_body_msg.lean.y << std::endl;
+				std::cout << "LX: " << ros_body_msg.lean.x << " LY: " << ros_body_msg.lean.y << std::endl;
 
                 std::stringstream tf_frame_basename_ss;
                 tf_frame_basename_ss << "/kinect_client/skeleton" << body_idx << "/";
@@ -190,6 +189,8 @@ public:
                     ros_joint_msg.orientation.y = joint_msg.orientation_.y;
                     ros_joint_msg.orientation.z = joint_msg.orientation_.z;
                     ros_joint_msg.orientation.w = joint_msg.orientation_.w;
+
+                    //std::cout << "JX: " << ros_joint_msg.orientation.x << std::endl;
 
                     ros_joints_msg.emplace_back( std::move( ros_joint_msg ) );
 
