@@ -1072,8 +1072,8 @@ public:
 				body->get_Lean(& lean);
 				float leanX = lean.X;
 				float leanY = lean.Y;
-				body_msg.lean_.x = leanX;
-				body_msg.lean_.y = leanY;
+				body_msg.lean_.x = static_cast<double>(leanX);
+				body_msg.lean_.y = static_cast<double>(leanY);
 				//this file is server code
 				//std::cout << body_msg.lean_.x << " " << body_msg.lean_.x << std::endl;
 
