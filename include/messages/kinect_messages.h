@@ -284,7 +284,7 @@ public:
 };
 
 // ####################################################################################################
-class KinectBodyLeanMessage
+class KinectBodyLeanMessage : public SerializableInterface
 {
 public:
 	float x, y;
@@ -293,6 +293,27 @@ public:
 	KinectBodyLeanMessage()
 	{
 		//
+	}
+
+	// ====================================================================================================
+	template<class __Archive>
+	void pack(__Archive & archive)
+	{
+		archive << static_cast<float>(x);
+		archive << static_cast<float>(y);
+	}
+
+	// ====================================================================================================
+	template<class __Archive>
+	void unpack(__Archive & archive)
+	{
+		float _x;
+		archive >> _x;
+		x = static_cast<float>(_x);
+
+		float _y;
+		archive >> _y;
+		y = static_cast<float>(_y);
 	}
 
 	// ====================================================================================================
