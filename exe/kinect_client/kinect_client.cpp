@@ -158,10 +158,16 @@ public:
                 auto const & joints_msg = body_msg.joints_;
                 auto & ros_joints_msg = ros_body_msg.joints;
 
-				ros_body_msg.lean.x = body_msg.lean_.x;
-				ros_body_msg.lean.y = body_msg.lean_.y;
+				_KinectBodyLeanMsg ros_lean_msg;
+				ros_lean_msg.x = body_msg.lean_.x;
+				ros_lean_msg.y = body_msg.lean_.y;
+				ros_body_msg.lean = std::move(ros_lean_msg);
 
-				std::cout << "LX: " << ros_body_msg.lean.x << " LY: " << ros_body_msg.lean.y << std::endl;
+				//ros_body_msg.lean.x = body_msg.lean_.x;
+				//ros_body_msg.lean.y = body_msg.lean_.y;
+
+				if (ros_body_msg.lean.x || ros_body_msg.lean.y)
+					std::cout << "LX: " << ros_body_msg.lean.x << " LY: " << ros_body_msg.lean.y << std::endl;
 
                 std::stringstream tf_frame_basename_ss;
                 tf_frame_basename_ss << "/kinect_client/skeleton" << body_idx << "/";

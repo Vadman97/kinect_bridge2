@@ -1075,7 +1075,7 @@ public:
 				body_msg.lean_.x = leanX;
 				body_msg.lean_.y = leanY;
 				//this file is server code
-				std::cout << body_msg.lean_.x << " " << body_msg.lean_.x << std::endl;
+				//std::cout << body_msg.lean_.x << " " << body_msg.lean_.x << std::endl;
 
                 auto & joints_msg = body_msg.joints_;
 
