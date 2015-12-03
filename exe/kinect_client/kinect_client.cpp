@@ -161,7 +161,8 @@ public:
 				ros_body_msg.lean.x = static_cast<float>(body_msg.lean_.x);
 				ros_body_msg.lean.y = static_cast<float>(body_msg.lean_.y);
 
-				std::cout << "LX: " << ros_body_msg.lean.x << " LY: " << ros_body_msg.lean.y << std::endl;
+				if (ros_body_msg.is_tracked)
+					std::cout << "LX: " << ros_body_msg.lean.x << " LY: " << ros_body_msg.lean.y << std::endl;
 
                 std::stringstream tf_frame_basename_ss;
                 tf_frame_basename_ss << "/kinect_client/skeleton" << body_idx << "/";
