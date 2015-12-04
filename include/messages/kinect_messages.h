@@ -284,6 +284,44 @@ public:
 };
 
 // ####################################################################################################
+class KinectBodyLeanMessage : public SerializableInterface
+{
+public:
+	float x, y;
+
+	KinectBodyLeanMessage()
+	{
+		x = 0.;
+		y = 0.;
+
+	}
+
+	// ====================================================================================================
+	template<class __Archive>
+	void pack(__Archive & archive)
+	{
+		archive << static_cast<float>(x);
+		archive << static_cast<float>(y);
+	}
+
+	// ====================================================================================================
+	template<class __Archive>
+	void unpack(__Archive & archive)
+	{
+		float _x;
+		archive >> _x;
+		x = static_cast<float>(_x);
+
+		float _y;
+		archive >> _y;
+		y = static_cast<float>(_y);
+	}
+
+	// ====================================================================================================
+	DECLARE_MESSAGE_INFO(KinectBodyLeanMessage)
+};
+
+// ####################################################################################################
 class KinectBodyMessage : public VectorMessage<KinectJointMessage>
 {
 public:
@@ -299,7 +337,7 @@ public:
     };
 
     std::vector<KinectJointMessage> & joints_;
-	PointMessage<float, 3> lean_; //only use x y dim
+	KinectBodyLeanMessage lean_;
     uint8_t is_tracked_;
     HandState hand_state_left_;
     HandState hand_state_right_;
