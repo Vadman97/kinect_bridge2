@@ -1,0 +1,17 @@
+(cl:defpackage kinect_bridge2-msg
+  (:use )
+  (:export
+   "<KINECTSPEECHPHRASE>"
+   "KINECTSPEECHPHRASE"
+   "<KINECTJOINT>"
+   "KINECTJOINT"
+   "<KINECTBODIES>"
+   "KINECTBODIES"
+   "<KINECTSPEECH>"
+   "KINECTSPEECH"
+   "<KINECTBODY>"
+   "KINECTBODY"
+   "<KINECTBODYLEAN>"
+   "KINECTBODYLEAN"
+  ))
+
